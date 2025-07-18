@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2x2l3yhxsxys"]
+
+[ext_resource type="Script" uid="uid://br5wohdmofi4k" path="res://Project-Unscripted-Git/Tests/mover.gd" id="1_nl3hh"]
+[ext_resource type="Script" uid="uid://cj4tv2lg5eof7" path="res://Project-Unscripted-Git/Tests/detector.gd" id="2_q86xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q86xj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4qe5"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Mover" type="Area2D" parent="."]
+position = Vector2(141, 152)
+script = ExtResource("1_nl3hh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover"]
+shape = SubResource("RectangleShape2D_q86xj")
+
+[node name="Detector" type="Area2D" parent="."]
+position = Vector2(327, 150)
+script = ExtResource("2_q86xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector"]
+shape = SubResource("RectangleShape2D_x4qe5")
+
+[connection signal="area_entered" from="Detector" to="Detector" method="_on_area_entered"]

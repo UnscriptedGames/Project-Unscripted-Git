@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bupvt4gn8f860"]
+
+[ext_resource type="Script" uid="uid://b8ojbl632ip21" path="res://Project-Unscripted-Git/Entities/Enemies/base_enemy.gd" id="1_ajk1q"]
+[ext_resource type="PackedScene" uid="uid://d2tewwibemr4u" path="res://Project-Unscripted-Git/UI/Components/health_bar.tscn" id="2_wagb0"]
+
+[node name="BaseEnemy" type="PathFollow2D"]
+rotates = false
+loop = false
+script = ExtResource("1_ajk1q")
+
+[node name="HealthBarSorter" type="CanvasGroup" parent="."]
+light_mask = 0
+visibility_layer = 3
+y_sort_enabled = true
+
+[node name="HealthBar" parent="HealthBarSorter" instance=ExtResource("2_wagb0")]
+y_sort_enabled = false
+offset_right = 96.0
+offset_bottom = 16.0

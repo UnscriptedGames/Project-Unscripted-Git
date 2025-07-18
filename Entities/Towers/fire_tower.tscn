@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm2qn010r66et"]
+
+[ext_resource type="PackedScene" uid="uid://lctco1uvr6vm" path="res://Project-Unscripted-Git/Entities/Towers/base_tower.tscn" id="1_ueotb"]
+[ext_resource type="Resource" uid="uid://bbxin8a071gdg" path="res://Project-Unscripted-Git/Entities/Towers/fire_tower_data.tres" id="2_g42lb"]
+[ext_resource type="Texture2D" uid="uid://bn0g77heb6ffv" path="res://Project-Unscripted-Git/Entities/Towers/Art/towers_grey_sheet.png" id="2_ql1rb"]
+
+[node name="FireTower" instance=ExtResource("1_ueotb")]
+data = ExtResource("2_g42lb")
+
+[node name="TowerBase" type="Sprite2D" parent="." index="0"]
+position = Vector2(0, -5)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ql1rb")
+region_enabled = true
+region_rect = Rect2(0.539856, 77.35, 102.232, 78.1818)
+
+[node name="TowerMid" type="Sprite2D" parent="." index="1"]
+position = Vector2(0, -30)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ql1rb")
+region_enabled = true
+region_rect = Rect2(684.59, 144.512, 77.3237, 68.7055)
+
+[node name="TowerTop" type="Sprite2D" parent="." index="2"]
+position = Vector2(0, -60)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_ql1rb")
+region_enabled = true
+region_rect = Rect2(185, 380.18, 88.5796, 97.3396)
+
+[node name="Muzzle" parent="." index="5"]
+position = Vector2(0, -92)

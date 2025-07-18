@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2tewwibemr4u"]
+
+[ext_resource type="Texture2D" uid="uid://hxfea7d2hbhd" path="res://Project-Unscripted-Git/UI/Components/Art/bar_shadow_round_outline_small.png" id="1_hs30q"]
+[ext_resource type="Texture2D" uid="uid://dav824b0uivbr" path="res://Project-Unscripted-Git/UI/Components/Art/bar_round_small.png" id="2_mxwn0"]
+[ext_resource type="Script" uid="uid://dkmndeh2hb7et" path="res://Project-Unscripted-Git/UI/Components/health_bar.gd" id="3_mxwn0"]
+
+[node name="HealthBar" type="TextureProgressBar"]
+y_sort_enabled = true
+max_value = 2.0
+value = 1.0
+texture_under = ExtResource("1_hs30q")
+texture_progress = ExtResource("2_mxwn0")
+script = ExtResource("3_mxwn0")

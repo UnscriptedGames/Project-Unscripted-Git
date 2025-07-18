@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3 uid="uid://cdp6d1u38p8u7"]
+
+[ext_resource type="Script" uid="uid://d1wf3hjcg7t3m" path="res://Project-Unscripted-Git/Entities/Enemies/enemy_data.gd" id="1_fxjy2"]
+
+[resource]
+script = ExtResource("1_fxjy2")
+speed = 100.0
+max_health = 2.0
+gold_reward = 10
+metadata/_custom_type_script = "uid://d1wf3hjcg7t3m"

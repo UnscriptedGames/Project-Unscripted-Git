@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TowerData" load_steps=3 format=3 uid="uid://bbxin8a071gdg"]
+
+[ext_resource type="Script" uid="uid://doekqwufgjj0y" path="res://Project-Unscripted-Git/Entities/Towers/tower_data.gd" id="1_8ead3"]
+[ext_resource type="PackedScene" uid="uid://boh360cdaefjo" path="res://Project-Unscripted-Git/Entities/Projectiles/fire_bolt.tscn" id="1_hjso4"]
+
+[resource]
+script = ExtResource("1_8ead3")
+range_in_tiles = 1
+fire_rate = 1.0
+projectile_scene = ExtResource("1_hjso4")
+projectile_speed = 400.0
+projectile_damage = 1.0
+metadata/_custom_type_script = "uid://doekqwufgjj0y"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://m4eg66w5s28i"]
+
+[ext_resource type="Script" uid="uid://bq53advt7ofii" path="res://Project-Unscripted-Git/Entities/Projectiles/base_projectile.gd" id="1_hc464"]
+
+[node name="BaseProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_hc464")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,150 @@
+[gd_scene load_steps=18 format=3 uid="uid://cq7tnt34e72p6"]
+
+[ext_resource type="PackedScene" uid="uid://bupvt4gn8f860" path="res://Project-Unscripted-Git/Entities/Enemies/base_enemy.tscn" id="1_o6e81"]
+[ext_resource type="Texture2D" uid="uid://np5pp38you1c" path="res://Project-Unscripted-Git/Entities/Enemies/Art/Character0_Walk.png" id="2_cs7nb"]
+[ext_resource type="Resource" uid="uid://cdp6d1u38p8u7" path="res://Project-Unscripted-Git/Entities/Enemies/test_enemy_data.tres" id="2_o2gl1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8br50"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(0, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyed6"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(460, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c1ux"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(920, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4fm0"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(1380, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83lgf"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(1840, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35kc2"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(2300, 1380, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvsj8"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(0, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pvpf"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(460, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw2rb"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(920, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yajuu"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(1380, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p55q0"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(1840, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07grt"]
+atlas = ExtResource("2_cs7nb")
+region = Rect2(2300, 460, 460, 460)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2gl1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8br50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyed6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c1ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4fm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83lgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35kc2")
+}],
+"loop": true,
+"name": &"walk_north_west",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvsj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pvpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw2rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yajuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p55q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07grt")
+}],
+"loop": true,
+"name": &"walk_south_west",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ixok"]
+radius = 14.0
+height = 56.0
+
+[node name="TestEnemy" instance=ExtResource("1_o6e81")]
+data = ExtResource("2_o2gl1")
+
+<<<<<<< HEAD
+[node name="HealthBar" parent="HealthBarSorter" index="0"]
+offset_left = -22.0
+offset_top = -58.0
+offset_right = 74.0
+offset_bottom = -42.0
+scale = Vector2(0.45, 0.45)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
+=======
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(1, -28)
+>>>>>>> parent of 59e0d14 (Y Sorting Changes)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_o2gl1")
+animation = &"walk_south_west"
+autoplay = "walk_south_west"
+<<<<<<< HEAD
+offset = Vector2(0, -175)
+=======
+frame_progress = 0.929357
+>>>>>>> parent of 59e0d14 (Y Sorting Changes)
+
+[node name="Hitbox" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(1, -23)
+shape = SubResource("CapsuleShape2D_6ixok")
+<<<<<<< HEAD
+=======
+
+[node name="HealthBar" parent="." index="2"]
+offset_left = -20.0
+offset_top = -60.0
+offset_right = 76.0
+offset_bottom = -44.0
+scale = Vector2(0.4, 0.4)
+>>>>>>> parent of 59e0d14 (Y Sorting Changes)
