@@ -4,7 +4,7 @@ extends PathFollow2D
 @export var data: EnemyData
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_bar: TextureProgressBar = $HealthBarSorter/HealthBar
+@onready var health_bar: TextureProgressBar = $HealthBar
 
 var _path: Path2D
 var _current_health: float
