@@ -3,14 +3,23 @@ extends PathFollow2D
 ## The data resource containing all stats for this enemy.
 @export var data: EnemyData
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+## A path to the AnimatedSprite2D node for this enemy.
+## We will assign this in the editor for each specific enemy scene.
+@export var animated_sprite_path: NodePath
+
 @onready var health_bar: TextureProgressBar = $YSortContainer/HealthBar
 
 var _current_health: float
 var _path: Path2D
+# We will get the actual sprite node in _ready.
+var _animated_sprite: AnimatedSprite2D
 
 
 func _ready() -> void:
+	# Get the animated sprite using the path we assign in the editor.
+	if animated_sprite_path:
+		_animated_sprite = get_node(animated_sprite_path)
+
 	# Only run game logic if the data resource is assigned.
 	if not data:
 		return
@@ -23,9 +32,7 @@ func _ready() -> void:
 		health_bar.update_health(_current_health, data.max_health)
 		health_bar.visible = false
 
-	# Wait for the next process frame to ensure the node's position on the
-	# path is ready, then set the initial animation.
-	await get_tree().process_frame
+	# Call update_animation directly. No await needed.
 	update_animation()
 
 
@@ -48,10 +55,7 @@ func _process(delta: float) -> void:
 	if not data or not is_instance_valid(_path):
 		return
 
-	# Move the enemy along the path.
 	progress += data.speed * delta
-
-	# Update the sprite animation based on direction.
 	update_animation()
 
 	if progress_ratio >= 1.0:
@@ -59,11 +63,10 @@ func _process(delta: float) -> void:
 
 
 func update_animation() -> void:
-	if not is_instance_valid(animated_sprite):
+	# Use the _animated_sprite variable we set in _ready.
+	if not is_instance_valid(_animated_sprite):
 		return
 
-	# This check is now crucial. We can't determine an animation
-	# if the data isn't loaded.
 	if not data:
 		return
 
@@ -73,7 +76,6 @@ func update_animation() -> void:
 	var new_animation: StringName
 	var new_flip: bool
 
-	# Read the animation names from the data resource instead of hard-coding them.
 	if direction.y < 0:
 		new_animation = data.animation_walk_up
 	else:
@@ -84,8 +86,8 @@ func update_animation() -> void:
 	else:
 		new_flip = false
 
-	if animated_sprite.animation != new_animation:
-		animated_sprite.play(new_animation)
+	if _animated_sprite.animation != new_animation:
+		_animated_sprite.play(new_animation)
 
-	if animated_sprite.flip_h != new_flip:
-		animated_sprite.flip_h = new_flip
+	if _animated_sprite.flip_h != new_flip:
+		_animated_sprite.flip_h = new_flip

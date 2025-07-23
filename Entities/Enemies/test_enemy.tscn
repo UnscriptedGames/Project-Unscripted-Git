@@ -10,18 +10,21 @@ height = 50.0
 
 [node name="TestEnemy" instance=ExtResource("1_o6e81")]
 data = ExtResource("2_o2gl1")
+animated_sprite_path = NodePath("YSortContainer/AnimatedSprite2D")
 
-[node name="HealthBar" parent="YSortContainer" index="0"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortContainer" index="0"]
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("3_o2gl1")
+animation = &"walk_south_west"
+autoplay = "walk_south_west"
+offset = Vector2(0, -175)
+
+[node name="HealthBar" parent="YSortContainer" index="1"]
 offset_left = -21.0
 offset_top = -61.0
 offset_right = 75.0
 offset_bottom = -45.0
 scale = Vector2(0.44, 0.44)
-
-[node name="AnimatedSprite2D" parent="." index="1"]
-sprite_frames = ExtResource("3_o2gl1")
-animation = &"walk_south_west"
-frame_progress = 0.460488
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CapsuleShape2D_6ixok")

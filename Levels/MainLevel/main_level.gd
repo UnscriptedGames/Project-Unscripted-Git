@@ -1,3 +1,4 @@
+# res://Project-Unscripted-Git/Levels/MainLevel/main_level.gd
 extends Node2D
 
 ## The scene for the fire tower we want to build.
@@ -7,7 +8,6 @@ extends Node2D
 @onready var enemy_path: Path2D = $YSortContainer/EnemyPath
 @onready var tile_map: TileMapLayer = $GroundLayer
 
-var _enemy_spawn_count: int = 0
 var _ghost_tower = null
 var _placed_towers: Array = []
 
@@ -17,9 +17,11 @@ func _ready() -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
+	# Create a new instance of the enemy scene.
+	
 	var enemy_instance: PathFollow2D = preload("res://Project-Unscripted-Git/Entities/Enemies/test_enemy.tscn").instantiate()
-	_enemy_spawn_count += 1
-	enemy_instance.name = "Enemy_" + str(_enemy_spawn_count)
+	
+	# Add the new enemy to the path.
 	enemy_path.add_child(enemy_instance)
 
 
