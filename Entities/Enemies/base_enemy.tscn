@@ -9,6 +9,22 @@ rotates = false
 loop = false
 script = ExtResource("1_ajk1q")
 
-[node name="HealthBar" parent="." instance=ExtResource("2_wagb0")]
+[node name="YSortContainer" type="Node2D" parent="."]
+
+[node name="HealthBar" parent="YSortContainer" instance=ExtResource("2_wagb0")]
+y_sort_enabled = false
 offset_top = -16.0
 offset_right = 96.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+animation = &""
+autoplay = "walk_south_west"
+offset = Vector2(0, -175)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -21)

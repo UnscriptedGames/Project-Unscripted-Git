@@ -9,3 +9,9 @@ extends Resource
 
 ## How much gold the player gets for defeating this enemy.
 @export var gold_reward: int = 10
+
+## The name of the animation for moving up/away.
+@export var animation_walk_up: StringName
+
+## The name of the animation for moving down/towards.
+@export var animation_walk_down: StringName

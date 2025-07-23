@@ -7,4 +7,6 @@ script = ExtResource("1_fxjy2")
 speed = 100.0
 max_health = 2.0
 gold_reward = 10
+animation_walk_up = &"walk_north_west"
+animation_walk_down = &"walk_south_west"
 metadata/_custom_type_script = "uid://d1wf3hjcg7t3m"
