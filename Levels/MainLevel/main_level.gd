@@ -6,7 +6,7 @@ extends Node2D
 
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var enemy_path: Path2D = $YSortContainer/EnemyPath
-@onready var tile_map: TileMapLayer = $GroundLayer
+@onready var tile_map: TileMapLayer = $YSortContainer/GroundLayer
 
 var _ghost_tower = null
 var _placed_towers: Array = []

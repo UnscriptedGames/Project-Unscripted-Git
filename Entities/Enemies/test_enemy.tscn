@@ -5,26 +5,27 @@
 [ext_resource type="SpriteFrames" uid="uid://ca6iy0qnoty4o" path="res://Project-Unscripted-Git/Entities/Enemies/Art/test_enemy_sprite_frames.tres" id="3_o2gl1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ixok"]
-radius = 13.0
-height = 50.0
+radius = 9.0
+height = 32.0
 
 [node name="TestEnemy" instance=ExtResource("1_o6e81")]
 data = ExtResource("2_o2gl1")
 animated_sprite_path = NodePath("YSortContainer/AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortContainer" index="0"]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.1, 0.1)
 sprite_frames = ExtResource("3_o2gl1")
 animation = &"walk_south_west"
 autoplay = "walk_south_west"
 offset = Vector2(0, -175)
 
 [node name="HealthBar" parent="YSortContainer" index="1"]
-offset_left = -21.0
-offset_top = -61.0
-offset_right = 75.0
-offset_bottom = -45.0
-scale = Vector2(0.44, 0.44)
+offset_left = -14.0
+offset_top = -42.0
+offset_right = 82.0
+offset_bottom = -26.0
+scale = Vector2(0.3, 0.3)
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_6ixok")
