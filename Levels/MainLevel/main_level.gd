@@ -11,17 +11,35 @@ extends Node2D
 var _ghost_tower = null
 var _placed_towers: Array = []
 
+# Object pooling variables
+var _enemy_scene = preload("res://Project-Unscripted-Git/Entities/Enemies/test_enemy.tscn")
+var _enemy_pool: EnemyPool
+var _projectile_pools = {}
+var _pool_debugger: PoolDebugger
 
 func _ready() -> void:
+	# Add this node to a group so towers can find it
+	add_to_group("main_level")
+	
+	# Initialize the enemy pool
+	_enemy_pool = EnemyPool.new(_enemy_scene, 20)
+	add_child(_enemy_pool)
+	
+	# Initialize the pool debugger
+	_pool_debugger = PoolDebugger.new()
+	add_child(_pool_debugger)
+	
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 
 
+
+# In file: Levels/MainLevel/main_level.gd
+
 func _on_spawn_timer_timeout() -> void:
-	# Create a new instance of the enemy scene.
+	# Get an enemy from the pool instead of instantiating
+	var enemy_instance = _enemy_pool.get_enemy()
 	
-	var enemy_instance: PathFollow2D = preload("res://Project-Unscripted-Git/Entities/Enemies/test_enemy.tscn").instantiate()
-	
-	# Add the new enemy to the path.
+	# Add the enemy to the path
 	enemy_path.add_child(enemy_instance)
 
 
@@ -104,3 +122,15 @@ func _place_tower(tile_coord: Vector2i) -> void:
 	# Clear the ghost reference so we can build another one.
 	_ghost_tower = null
 	print("Tower placed!")
+
+
+## Get or create a projectile pool for a specific scene
+## @param projectile_scene: The projectile scene to get a pool for
+## @return: The projectile pool for the given scene
+func get_projectile_pool(projectile_scene: PackedScene) -> ProjectilePool:
+	var scene_path = projectile_scene.resource_path
+	if not _projectile_pools.has(scene_path):
+		var new_pool = ProjectilePool.new(projectile_scene, 30)
+		add_child(new_pool)
+		_projectile_pools[scene_path] = new_pool
+	return _projectile_pools[scene_path]

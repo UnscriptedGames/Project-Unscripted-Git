@@ -20,7 +20,8 @@ var is_ghost: bool = false:
 
 var _targets_in_range: Array = []
 var _current_target = null
-
+var _projectile_pool: ProjectilePool
+var _projectiles_container: Node2D
 
 func _ready() -> void:
 	# The setter for is_ghost handles visibility changes after creation.
@@ -71,17 +72,57 @@ func _try_to_shoot() -> void:
 		_shoot()
 		shoot_timer.start(1.0 / data.fire_rate)
 
+# In file: Entities/Towers/base_tower.gd
+
+# In file: Entities/Towers/base_tower.gd
+
+# In file: Entities/Towers/base_tower.gd
 
 func _shoot() -> void:
 	if not data.projectile_scene:
 		return
-	var new_projectile = data.projectile_scene.instantiate()
-	new_projectile.target = _current_target
-	new_projectile.speed = data.projectile_speed
-	new_projectile.damage = data.projectile_damage
-	new_projectile.global_position = muzzle.global_position
-	get_tree().root.add_child(new_projectile)
+	
+	# We need a reference to the main level to get the pool and the container.
+	# We assume there is only one "main_level" node in the scene.
+	var main_level_nodes = get_tree().get_nodes_in_group("main_level")
+	if main_level_nodes.is_empty():
+		return # Can't shoot if we can't find the main level.
+	
+	var main_level = main_level_nodes[0]
 
+	# Get the projectile pool from the main level.
+	if not _projectile_pool and main_level.has_method("get_projectile_pool"):
+		_projectile_pool = main_level.get_projectile_pool(data.projectile_scene)
+
+	# Get a projectile, which should be parentless at this point.
+	var projectile
+	if _projectile_pool:
+		projectile = _projectile_pool.get_projectile()
+	else:
+		projectile = data.projectile_scene.instantiate()
+	
+	if not projectile:
+		return
+
+	# Get the container for projectiles, which is the YSort node.
+	if not is_instance_valid(_projectiles_container):
+		_projectiles_container = main_level.get_node("YSortContainer")
+
+	# Add the projectile to the scene tree ONCE.
+	if is_instance_valid(_projectiles_container):
+		_projectiles_container.add_child(projectile)
+	else:
+		# Fallback to the root if the container isn't found.
+		get_tree().root.add_child(projectile)
+
+	# Configure the projectile's properties.
+	projectile.target = _current_target
+	projectile.z_index = 1
+	projectile.speed = data.projectile_speed
+	projectile.damage = data.projectile_damage
+	projectile.global_position = muzzle.global_position
+	projectile.visible = true
+	
 
 func _on_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()
