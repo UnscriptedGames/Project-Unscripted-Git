@@ -6,26 +6,30 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ixok"]
 radius = 9.0
-height = 32.0
+height = 44.0
 
 [node name="TestEnemy" instance=ExtResource("1_o6e81")]
 data = ExtResource("2_o2gl1")
 animated_sprite_path = NodePath("YSortContainer/AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="YSortContainer" index="0"]
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.07, 0.07)
 sprite_frames = ExtResource("3_o2gl1")
 animation = &"walk_south_west"
 autoplay = "walk_south_west"
-offset = Vector2(0, -175)
+frame_progress = 0.907591
+offset = Vector2(0, -430)
 
 [node name="HealthBar" parent="YSortContainer" index="1"]
-offset_left = -14.0
-offset_top = -42.0
-offset_right = 82.0
-offset_bottom = -26.0
-scale = Vector2(0.3, 0.3)
+offset_left = -17.0
+offset_top = -74.0
+offset_right = 79.0
+offset_bottom = -58.0
+scale = Vector2(0.36, 0.36)
+
+[node name="Hitbox" parent="." index="1"]
+visible = false
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, -14)
+position = Vector2(0, -22)
 shape = SubResource("CapsuleShape2D_6ixok")
